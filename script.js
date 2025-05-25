@@ -5,30 +5,14 @@ function setAll(content, clas) {
     })
 }
 async function getSongs(playlist) {
-    let data = await fetch(`http://127.0.0.1:3000/public/assets/music/${playlist}`)
-    data = await data.text()
-    let div = document.createElement("div")
-    div.innerHTML = data;
-    let songs_href = div.querySelectorAll("a");
-    let songs = new Array;
-    for (let e of songs_href) {
-        e = e.href
-        if (e.endsWith(".mp3")) {
-            songs.push(e)
-        }
-    }
-    // console.log(songs)
-    let songnames = songs.map((song) => {
-        song = song.split("/").pop();
-        song = song.replaceAll("%20", " ")
-        return song.slice(0, song.length - 4)
+    let data = await fetch(`https://api.github.com/repos/mukulsharma2005/spotify/contents/assets/music/${playlist}?ref=master`)
+    data = await data.json()
+    let songnames = data.map((song) => {
+        return song.name
     })
     let song_list = new Object;
-    for (let index = 0; index < songnames.length; index++) {
-        const songname = songnames[index], song = songs[index];
-        for (const element of song) {
-            song_list[songname] = song;
-        }
+    for (const songname of songnames) {
+        song_list[songname.slice(0, songname.length - 4)] = `https://mukulsharma2005.github.io/spotify/assets/music/${playlist}/${songname}`
     }
     // console.log(song_list)
     return song_list
@@ -53,20 +37,12 @@ async function glow(name) {
     });
 }
 async function get_playlists() {
-    let data = await fetch("http://127.0.0.1:3000/public/assets/music/");
-    data = await data.text();
-    let div = document.createElement("div")
-    div.innerHTML = data;
-    let a_tags = Array.from(div.querySelectorAll("a")).slice(1,);
-    let names = new Array;
-    a_tags.forEach((e) => {
-        if (e.href != "") {
-            let add_array = e.toString().split("/");
-            let name = add_array[add_array.length - 2].replaceAll("%20", " ");
-            // name = name.replaceAll("20","")
-            names.push(name);
-        }
+    let data = await fetch("https://api.github.com/repos/mukulsharma2005/spotify/contents/assets/music?ref=master");
+    data = await data.json();
+    let names = data.map((playlist) => {
+        return playlist.name
     })
+    // console.log(names)
     return names;
 }
 get_playlists()
@@ -151,7 +127,15 @@ async function main(playlist) {
         let track = songs[i]
         if (i < n && i >= 0) {
             audio.src = track;
-            audio.load();
+            // console.log("Loading...")
+            await audio.load();
+            // audio.addEventListener('loadstart', () => {
+            //     console.log("load start")
+            // });
+            // audio.addEventListener("canplay",()=>{
+            //     console.log("Play")
+            // })
+            console.log("Loaded.")
             play_state = true;
             play_song()
             glow(name);
@@ -197,7 +181,6 @@ async function main(playlist) {
     let miniPlayer = document.querySelector(".mini-player")
     let player = document.querySelector(".player")
     let up_funct = async (e) => {
-        console.log(player_open)
         if (!player_open) {
             player.style.display = "flex"
             miniPlayer.style.display = "none"
@@ -232,7 +215,6 @@ async function main(playlist) {
                 let play2 = document.querySelector(".player .play")
 
                 if (!play_state) {
-                    console.log(i)
                     audio.play()
                     play_state = true;
                     play.src = "assets/icons/pause.svg"
@@ -294,10 +276,20 @@ async function main(playlist) {
             let full_time = audio.duration;
             let sec = String(Math.floor(now % 60)).padStart(2, "0");
             let min = now / 60; min = String(Math.floor(min)).padStart(2, "0");
-            setAll(`${min}:${sec}`, ".current")
+            if (min != "NaN" && sec != "NaN") {
+                setAll(`${min}:${sec}`, ".current")
+            }
+            else {
+                setAll(`00:00`, ".current")
+            }
             let full_sec = String(Math.floor(full_time % 60)).padStart(2, "0");
             let full_min = String(Math.floor(full_time / 60)).padStart(2, "0");
-            setAll(`${full_min}:${full_sec}`, ".full")
+            if (full_min != 'NaN' && full_sec != 'NaN') {
+                setAll(`${full_min}:${full_sec}`, ".full")
+            }
+            else {
+                setAll(`00:00`, ".full")
+            }
             let percent = now / full_time * 100 + "%";
             filled.style.width = percent;
             filled2.style.width = percent;
@@ -367,7 +359,6 @@ async function main(playlist) {
                 let play = document.querySelector(" .controls .play")
                 let play2 = document.querySelector(".player .play")
                 if (!play_state) {
-                    console.log(i)
                     audio.play()
                     play_state = true;
                     play.src = "assets/icons/pause.svg"
@@ -395,18 +386,20 @@ async function main(playlist) {
                 i--;
                 changeSong(i)
             })
-            forward.addEventListener("click",async ()=>{
-                if (audio.currentTime<=(audio.duration-10)){
-                audio.currentTime = audio.currentTime + 10}
-                else{
+            forward.addEventListener("click", async () => {
+                if (audio.currentTime <= (audio.duration - 10)) {
+                    audio.currentTime = audio.currentTime + 10
+                }
+                else {
                     audio.currentTime = audio.duration
                 }
             })
-            backward.addEventListener("click",async ()=>{
-                if (audio.currentTime>=10){
-                audio.currentTime = audio.currentTime - 10}
-                else{
-                    audio.currentTime=0
+            backward.addEventListener("click", async () => {
+                if (audio.currentTime >= 10) {
+                    audio.currentTime = audio.currentTime - 10
+                }
+                else {
+                    audio.currentTime = 0
                 }
             })
             let seekbar = document.querySelector(".player .seekbar")
