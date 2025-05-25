@@ -1,0 +1,538 @@
+main {
+    display: flex;
+    width: fit-content;
+    gap: 0.5vw;
+    margin: 8px auto;
+    position: relative;
+    /* margin: 8px; */
+
+    box-sizing: border-box;
+}
+
+main>* {
+    background-color: #121212;
+    border-radius: 10px;
+    height: 81vh;
+}
+
+.library {
+    width: 19vw;
+    box-sizing: border-box;
+    padding: 10px 0px;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    position: relative;
+    transition: 0.5s all ease-out;
+}
+
+.library header {
+    display: flex;
+    box-sizing: border-box;
+    height: 20%;
+    justify-content: space-between;
+    padding: 8px 10px;
+    font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic";
+    font-weight: 700;
+}
+
+.library header img {
+    height: 20px;
+    width: 20px;
+    padding: 5px;
+}
+
+.library .add_song {
+    padding: 2px;
+    border-radius: 50%;
+    background-color: #121212;
+}
+
+.library .add_song:hover {
+    filter: brightness(150%);
+
+    /* background-color: rgba(89, 87, 87, 0.7); */
+}
+
+.library header:last-child {
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #121212;
+}
+
+.library header:last-child :hover {
+    filter: brightness(200%);
+    /* background-color: aquamarine; */
+}
+
+.library .box * {
+    box-sizing: border-box;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: #121212;
+    /* color: blue; */
+}
+
+.library .box>*:hover {
+    background-color: #212020;
+}
+
+.about-items {
+    font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0px 0px;
+    color: rgb(179, 179, 179);
+}
+
+.language-box {
+    width: fit-content;
+    font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic";
+    font-weight: 900;
+    margin: 23px 0px;
+    font-size: 16px;
+    gap: 8px;
+    border: 2px solid white;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.language-box .globe {
+    width: 18px;
+    filter: invert();
+}
+
+.library footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px 20px;
+}
+
+.library .box {
+    /* background-color: aqua; */
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: 100%;
+    max-height: 150px;
+    /* z-index: 10; */
+    border-radius: 10px;
+    margin-block: 30px;
+    padding-inline: 20px;
+    font-size: medium;
+    font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic";
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* overflow-x: hidden; */
+}
+
+.play-box {
+    width: 96%;
+    box-sizing: border-box;
+    /* margin: auto !important; */
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    bottom: 0px;
+    right: 2%;
+    height: 65px;
+    padding: 10px 10px;
+    border-radius: 40px 40px 0px 0px;
+    /* padding-block: 30px; */
+    background-color: #09fd6b;
+    /* display: none; */
+    z-index: 20;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.controls img {
+    width: 50px;
+}
+
+.song-pic {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    /* background-color: aliceblue; */
+    /* width: 700px !important; */
+}
+
+.song-pic-img {
+    width: 60px;
+}
+
+.pause {
+    display: none;
+}
+
+
+
+.song-info {
+    /* position: absolute;
+    left: 200px; */
+    gap: 10px;
+}
+
+.song-name {
+    overflow: hidden;
+    width: fit-content;
+    max-width: 350px;
+
+}
+
+.song-info .name {
+    /* background-color: aqua; */
+    width: fit-content;
+    overflow: hidden;
+    /* max-width: ; */
+    white-space: nowrap;
+    color: black;
+    font-size: 25px;
+    font-family: SpotifyMixUITitle, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic";
+    font-weight: 800;
+    animation: slider 10s infinite linear;
+}
+
+.duration {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* position: absolute;
+    right: 300px; */
+    background-color: black;
+    padding: 10px 18px;
+    border-radius: 20px;
+    color: #09fd6b;
+    font-weight: 600;
+}
+
+.seek-box {
+    /* position: absolute; */
+    top: 0px;
+    width: 95%;
+    background-color: transparent;
+    /* top: 60px;
+    left: 650px; */
+    background-color: rgb(30, 29, 29);
+    width: 600px;
+    border-radius: 50px;
+    padding: 30px 40px 20px 40px;
+}
+
+.seekbar {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    /* width: 95%; */
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    border-radius: 5px;
+    /* box-sizing: border-box; */
+    /* padding-inline: 10px; */
+    width: 95%;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: 0.5s all ease-in;
+}
+
+.filled {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 0px;
+    background-color: white;
+    width: 0%;
+    height: 5px;
+    border-radius: 5px;
+    transition: 0.2s all ease-out;
+
+}
+
+.seek-circle {
+    background-color: white;
+    position: absolute;
+    /* left: 0%; */
+    right: 0px;
+    transform: translateX(50%);
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    /* transition: 0.5s all ease; */
+
+}
+
+.player {
+    display: none;
+}
+
+
+.up-seekbar {
+    position: relative;
+    background-color: rgb(70, 70, 70);
+    width: 100%;
+}
+
+/* .duration{
+    display: none;
+} */
+/* .up-duration{
+    display: none;
+} */
+.up-close {
+    position: absolute;
+    transform: rotate(180deg);
+    /* background-color: white;
+    filter: invert(); */
+    top: 5px;
+    right: 20px;
+}
+.player .song-name{
+    max-width: none;
+}
+.up-controls{
+    background-color: #1e1d1d;
+    border-radius: 30px;
+    padding: 4px;
+    gap: 10px;
+    box-sizing: border-box;
+}
+.up-controls >*{
+    filter: invert();
+}
+.up-song-name {
+    /* position: relative; */
+    /* background-color: rgb(18 153 80); */
+    background: url("https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTllbGd5ZDN0aDFnaDJtaGd4ZTFsbm54MnU1MnNtejB0eXdzemNzNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9bTjZrytydVRK/giphy.gif") center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    backdrop-filter: blur(150px);
+    font-size: 200px !important;
+    /* overflow: visible !important; */
+    /* top: -70px;
+    left: 80px; */
+    /* animation: none; */
+    width: 100% !important;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    /* max-width: auto !important; */
+}
+.up-song-name .name{
+    /* background-color: bisque; */
+    /* width: 900px !important; */
+    animation: none;
+    color: white !important;
+    
+}
+
+
+.up {
+    cursor: pointer;
+    z-index: 70 !important;
+}
+
+.up img {
+    width: 50px;
+}
+
+.up-play-box {
+    overflow: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    /* right: 0px; */
+    box-sizing: border-box;
+    margin: 0px;
+    height: calc(100%) !important;
+    width: calc(98vw) !important;
+    
+    border-radius: 40px 40px 40px 40px;
+    /* background-color: aqua !important; */
+}
+
+.up-song-pic {
+    grid-column: 1/2;
+    grid-row: 1/4;
+    padding: 80px 30px 20px 70px;
+    border-radius: 30px;
+    background-color: rgb(22, 22, 22);
+}
+
+.up-song-pic-img {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border: 5px solid black;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.up-duration {
+    display: flex;
+    justify-content: space-between;
+    margin-block-start: 5px;
+    margin-inline: 3px;
+}
+
+.stylus {
+    /* background-color: aqua; */
+    /* width: fit-content !important;
+    height: fit-content !important; */
+    position: absolute;
+    top: 30px;
+    left: 6px;
+    transform: rotate(30deg);
+    width: 300px;
+    z-index: 3;
+}
+
+.song-disk {
+    width: 350px !important;
+    height: 350px;
+    border-radius: 50%;
+    animation: spin 15s linear 0s infinite;
+}
+
+.player-left {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.player-right {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    height: 100%;
+    gap: 30px;
+}
+
+@keyframes slider {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@media (max-width:1300px) {
+    .up{
+        display: none;
+    }
+    .player{
+        display: none !important;
+    }
+    .mini-player{
+        display: flex !important;
+    }
+    .library {
+        position: absolute;
+        box-sizing: border-box;
+        transform: translateX(-200%);
+        width: 70%;
+        z-index: 2;
+        height: 100%;
+        /* max-height: 250px; */
+    }
+
+    .library .box {
+        max-height: 250px;
+    }
+
+    .playlist-box {
+        width: 100% !important;
+        /* color: #09fd6b; */
+    }
+
+    main {
+        width: 100%;
+    }
+}
+
+@media (max-width:450px) {
+    .playlist-box>h2 {
+        /* text-align: center; */
+        margin: 7px auto;
+        font-size: 30px !important;
+    }
+    .player{
+        flex-direction: column;
+        transform: scale(1);
+    }
+    
+    .playlist-cards {
+        /* background-color: aquamarine; */
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center;
+        margin: auto !important;
+    }
+}
+
+@media (max-width:900px) {
+    .duration {
+        display: none;
+    }
+
+    .song-name {
+        max-width: 150px;
+    }
+
+    .next,
+    .prev {
+        display: none;
+    }
+
+    .seekbar {
+        width: 100%;
+        top: 100%;
+        transform: translateY(-100%);
+        cursor: default;
+        pointer-events: none;
+    }
+
+    .seek-circle {
+        display: none;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.player {
+    /* display: flex; */
+    box-sizing: border-box;
+    padding: 45px;
+}
+
+.mini-player {
+    /* display: none; */
+}

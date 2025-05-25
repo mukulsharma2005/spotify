@@ -1,0 +1,100 @@
+.icon{
+    width: 25px;
+    height: 25px;
+    filter: invert();
+    fill: black !important;
+    color: blue;
+}
+.font-1{
+    font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic";
+    font-weight: 600;
+}
+.color-1{
+    color: rgb(168, 171, 173);
+}
+.gap-1{
+    gap: 10px;
+}
+.gap-2{
+    gap: 20px;
+}
+.gap-3{
+    gap: 35px;
+}
+.separator{
+    width: 2px;
+    background-color: white;
+    height: 30px;
+}
+.light-gray{
+    background-color: #1f1f1f;
+}
+.rounded{
+    border-radius: 25px;
+}
+.dark-gray{
+    background-color: #121212;
+}
+.all-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.h-1{
+    height: 50px;
+}
+.w-1{
+    width: 50px;
+}
+.txt-btn{
+    transition: 0.1s transform ease-in-out;
+    cursor: pointer;
+}
+.txt-btn:hover{
+    color: white;
+    transform: scale(1.05);
+}
+.btn{
+    cursor: pointer;
+    transition: 0.1s all ease-in-out;
+}
+.btn:hover{
+    transform: scale(1.05);
+    filter: brightness(150%);
+}
+.glow{
+    background-color: rgb(27, 183, 51) !important;
+    filter: brightness(150%);
+}
+.m-0{
+    margin: 0px;
+}
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  /* display: none; */
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e; /* dark background */
+  /* background-color: transparent; */
+  /* display: none; */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555; /* dark gray thumb */
+  /* background-color: transparent; */
+  border-radius: 4px;
+  /* display: none; */
+  border: 2px solid #1e1e1e; /* match track to make it inset */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888; /* lighter on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1e1e1e;
+}

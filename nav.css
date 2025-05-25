@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: black;
+    color: white;
+}
+nav{
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: min-content min-content auto;
+    padding: 7px 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+nav .spotify{
+    display: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    margin-inline-start: 7px;
+}
+
+.left{
+    display: flex;
+    justify-content: left !important;
+}
+.main-logo{
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0px 25px;
+}
+.search-box{
+    /* width: min(500,34vw); */
+    width: fit-content;
+    padding: 0px 15px;
+    gap: 15px;
+    transition: 0.25s all ease-in-out;
+}
+.search-box:hover{
+    filter: brightness(130%);
+    outline: 1px solid rgb(149, 149, 149);
+}
+.cross{
+    visibility: hidden;
+}
+.input-box{
+    width: min(250px,15vw);
+    color: rgb(168, 171, 173);
+    font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic";
+    font-weight: 400;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.search-box > .separator{
+    width: 2px;
+    height: 20px;
+    background-color: rgb(168, 171, 173);
+}
+.sign-in{
+    background-color: aliceblue;
+    color: black;
+    padding: 0px 30px;
+}
+.right{
+    width: fit-content;
+    white-space: nowrap;
+}
+@media (min-width:1730px) {
+    nav{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        /* border: 2px solid red; */
+    }
+    .left{
+        display: flex;
+        justify-content: left !important;
+        /* background-color: blanchedalmond; */
+    }
+}
+@media (max-width:1050px){
+    .search-box *:not(:first-child){
+        display: none;
+    }
+}
+@media (max-width:1300px){
+    .right .separator ,.right-l{
+        display: none !important;
+    }
+    .hamburger{
+        display: inline-block !important;
+    }
+    .spotify{
+        display: inline !important;
+    }
+    
+}
+@media (max-width:1300px){
+    nav{
+        grid-template-columns: 1fr 1fr;
+    }
+    .install-app{
+        display: none !important;
+    }
+    .sign-up{
+        display: none;
+    }
+    .main-logo{
+        margin: 5px !important;
+    }
+    .center{
+        display: none !important;
+    }
+}
+.right{
+    display: flex;
+    justify-content: right !important;
+    width: 100%;
+    /* background-color: aquamarine; */
+}
+.hamburger{
+    display: none;
+    margin-right: 10px;
+}
+.install-app{
+    gap: 5px;
+}
+.install-app img{
+    height: 20px;
+}
