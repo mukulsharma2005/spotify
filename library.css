@@ -412,10 +412,11 @@ main>* {
 }
 
 .player-left {
+    overflow: hidden;
     height: 100%;
+    padding: 30px;
     display: flex;
     align-items: center;
-    height: 100%;
 }
 
 .player-right {
